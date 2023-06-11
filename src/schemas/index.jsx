@@ -7,6 +7,7 @@ export const signUpSchema = Yup.object({
   country: Yup.string().required('Please Select Country'),
   city: Yup.string().min(2).max(30).required('Please enter your city'),
   state: Yup.string().min(2).max(30).required('Please enter your state'),
+  zip: Yup.string().required('Please enter Zip Code'),
   terms: Yup.boolean().required('Checked terms & condition'),
 });
 

